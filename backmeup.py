@@ -37,12 +37,24 @@ def getFilesToCompress():
     list_of_files = []
 
     for i in to_compress:
+        # Make tuple to append
         if i != '\n':
             if i[0] != '/':
                 app = os.getcwd() + '/'
             else:
                 app = ''
-            list_of_files.append(makeTuple(app + i))
+
+            t = makeTuple(app + i)
+
+            # Check name collision
+            for j in list_of_files:
+                if j[1] == t[1]:
+                    print j, t
+                    print 'Warning! Name collision: ' + t[1]
+                    exit()
+
+            # Append
+            list_of_files.append(t)
 
     return list_of_files
 
