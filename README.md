@@ -1,6 +1,6 @@
 # About
 
-BackMeUp is a small script to help me create quick and dirty tar file containing backups of my file system.
+BackUp is a small script to help me create quick and dirty tar file containing backups of my file system.
 
 I developed this script because I had a few directories in sperate locations and I wanted to back them up into a single tar file.
 
@@ -24,7 +24,7 @@ Note that has of this version ~ can't be use to refer to the home directory.
 
 The contents of the tar file will be the following.
 
-    backmeup_2013_06_23.tar
+    backup_2013_06_23.tar
     |--bmu_files
     |--Documents/
     |--Images/
