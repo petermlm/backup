@@ -11,14 +11,14 @@ def Compress():
     # (real directory, object, dir in tar)
     to_compress = getFilesToCompress()
 
-    # Add bmu_files to list of files to compress
-    # list_of_files = ['bmu_files'] + to_compress
+    # Add bu_files to list of files to compress
+    # list_of_files = ['bu_files'] + to_compress
 
     # Get name of tar file
     file_name = getFileName()
 
-    # Make tar with bmu_files
-    cmd = 'tar -cf ' + file_name + ' bmu_files'
+    # Make tar with bu_files
+    cmd = 'tar -cf ' + file_name + ' bu_files'
     os.system(cmd)
     directory = os.getcwd() + '/' + file_name
 
@@ -26,14 +26,17 @@ def Compress():
 
     # Add files in to_compress
     for i in to_compress:
-        print 'Adding file ' + i[0] + '/' + i[1]
-        os.chdir(i[0])
-        cmd = 'tar -r --file=' + directory + ' ' + i[1]
-        os.system(cmd)
+        if os.path.exists(i[0] + '/' + i[1]):
+            print 'Adding file ' + i[0] + '/' + i[1]
+            os.chdir(i[0])
+            cmd = 'tar -r --file=' + directory + ' ' + i[1]
+            os.system(cmd)
+        else:
+            print 'File ' + i[0] + '/' + i[1] + ' does not exist. Skipping.'
 
-# Get files and directories from the file bmu_files
+# Get files and directories from the file bu_files
 def getFilesToCompress():
-    to_compress = open('bmu_files')
+    to_compress = open('bu_files')
     list_of_files = []
 
     for i in to_compress:
