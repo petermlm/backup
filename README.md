@@ -2,13 +2,13 @@
 
 BackUp is a small script to help me create quick and dirty tar file containing backups of my file system.
 
-I developed this script because I had a few directories in sperate locations and I wanted to back them up into a single tar file.
+I developed this script because I had a few directories in separate locations and I wanted to back them up into a single tar file.
 
 # How To Use
 
-BackMeUp works by reading from a file, called bmu\_files, which files and directories you want to store to the target tar file.
+BackUp works by reading from a file, called bu\_files, which contain the files and directories you want to store to the target tar file.
 
-Just write the directory locations to the bmu\_file and you're good to go.
+Just write the directory locations to the bu\_file and you're good to go.
 
     /home/someuser/Documents/
     /home/someuser/Images/
@@ -18,14 +18,14 @@ Just write the directory locations to the bmu\_file and you're good to go.
 
 In the above example you have two directories in the home folder of someuser, one directory in /var/www, a local file and a local directory.
 
-By local, it's meant that the file/direcotry being mention is in the same directory has BackMeUp.
+By local, it's meant that the file/directory being mention is in the same directory has the BackUp script.
 
-Note that has of this version ~ can't be use to refer to the home directory.
+Note that has of this version, tiled (~) can't be use to refer to the home directory.
 
 The contents of the tar file will be the following.
 
     backup_2013_06_23.tar
-    |--bmu_files
+    |--bu_files
     |--Documents/
     |--Images/
     |--localfile
