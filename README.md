@@ -6,6 +6,17 @@ I developed this script because I had a few directories in separate locations an
 
 No really... I just wanted to try GitHub without bothering anyone. But I still use the script.
 
+(Disclaimer: The author is not responsible for any problems you with encounter with the usage of this project.)
+
+# Arguments
+
+    -h             - Display a... somewhat helpful help text.
+    -b bu_file     - bu_file location. If this flag is not specified, the
+                     default location where the script will look for the
+                     bu_file is the same as the execution directory.
+    -o target_file - The resulting tar file. Default is stored in the same
+                     directory with a default name.
+
 # How To Use
 
 BackUp works by reading from a file, called bu\_files, which contain the files and directories you want to store to the target tar file.

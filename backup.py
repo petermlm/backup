@@ -144,7 +144,7 @@ if __name__ == "__main__":
     # Take arguments
     # If there is a help flag, just display the help and quit.
     if "-h" in sys.argv:
-        print "HELP"
+        print "Check the README.md file."
         exit()
 
     try:
