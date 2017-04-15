@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-# TODO: If the target file is given, the name should be changed
 
-# System imports
 import os
 import sys
 import datetime
@@ -14,6 +12,8 @@ import datetime
 
 
 def addFile(directory, target_file_name, file_to_add):
+    print(directory)
+    print(file_to_add)
     os.chdir(directory)
     cmd = "tar -r --file=" + target_file_name + " " + file_to_add
     os.system(cmd)
@@ -25,11 +25,6 @@ def Compress(bu_files, target_file_name):
     # like:
     # (directory, filename)
     to_compress = getFilesToCompress(bu_files)
-
-    # Make tar with bu_files (Not needed for now)
-    # os.chdir(os.path.dirname(bu_files))
-    # cmd = "tar -cf " + target_file_name + " " + bu_files
-    # os.system(cmd)
 
     # Add files in to_compress
     for i in to_compress:
@@ -58,14 +53,13 @@ def getFilesToCompress(bu_files):
             line = line[:-1]
 
         if line[0] != "/":
+            line = os.path.expanduser(line)
             line = os.path.join(os.getcwd(), line)
 
         entry = (os.path.dirname(line), os.path.basename(line))
 
         # Check name collision
         for j in list_of_files:
-            # if j[1] == entry[1] or j[1] == bu_files: (bu_files not needed in
-            # archive for now)
             if j[1] == entry[1]:
                 print("Multiple files with name \"{}\"".format(j[1]))
                 exit(1)
@@ -115,9 +109,11 @@ def parseArgs(argv):
             try:
                 target_file_name = argv[i+1]
 
+                # Make path absolute, if it is not
                 if not os.path.isabs(target_file_name):
                     target_file_name = os.path.join(os.getcwd(), target_file_name)
 
+                # Add tar extension, if it's not there
                 if os.path.splitext(target_file_name)[1] != ".tar":
                     target_file_name += ".tar"
 
